@@ -151,4 +151,4 @@ void eliminarLibro(Libro biblioteca[], int *cantidad) {
             return;
         }}
     printf("Libro no encontrado.\n");
-}
+} 
