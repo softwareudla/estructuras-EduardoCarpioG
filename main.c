@@ -1,39 +1,47 @@
 #include <stdio.h>
 #include "funciones.h"
 
-int main (int argc, char *argv[]) {
+int main() {
+    Libro biblioteca[MAX_LIBROS];
+    int cantidadLibros = 0;
+    int opcion;
+ 
+    inicializarBiblioteca(biblioteca, &cantidadLibros);
 
-    struct Libro libros[20];
-    int opc;
-    int i=0;
-    do{
-    opc = menu();
-    switch (opc)
-    {
-        case 1:
-            registrarLibros(libros, i);
-            break;
-        case 2:
-            mostrarLibros(libros);
-            break;
-        case 3:
-            int id;
-            printf("Ingrese el id del libro a buscar: ");
-            scanf("%d", &id);
-            buscarLibroId(libros, id);
-            i++;
-            break;
-        case 4:
-            char titulo[100];
-            printf("Ingrese el titulo del libro a buscar: ");
-            scanf("%s", titulo);
-            buscarLibroTitulo(libros, titulo);
-            break;
-        
+    do {
+        printf("\n--- Biblioteca ---\n");
+        printf("1. Registrar libro\n");
+        printf("2. Mostrar libros\n");
+        printf("3. Buscar libro\n");
+        printf("4. Actualizar estado\n");
+        printf("5. Eliminar libro\n");
+        printf("6. Salir\n");
+        printf("Seleccione una opcion: ");
+        scanf("%d", &opcion);
 
-    }
-    }while(opc != 7);
-
+        switch (opcion) {
+            case 1:
+                registrarLibro(biblioteca, &cantidadLibros);
+                break;
+            case 2:
+                mostrarLibros(biblioteca, cantidadLibros);
+                break;
+            case 3:
+                buscarLibro(biblioteca, cantidadLibros);
+                break;
+            case 4:
+                actualizarEstado(biblioteca, cantidadLibros);
+                break;
+            case 5:
+                eliminarLibro(biblioteca, &cantidadLibros);
+                break;
+            case 6:
+                printf("Saliendo del programa.\n");
+                break;
+            default:
+                printf("Opcion invalida.\n");
+        }
+    } while (opcion != 6);
 
     return 0;
 }
