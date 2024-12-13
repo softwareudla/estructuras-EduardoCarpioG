@@ -131,7 +131,7 @@ void actualizarEstado(Libro biblioteca[], int cantidad) {
             return;
         }}
     printf("Libro no encontrado.\n");
-}
+} 
 void eliminarLibro(Libro biblioteca[], int *cantidad) {
     if (*cantidad == 0) {
         printf("No hay libros registrados.\n");
